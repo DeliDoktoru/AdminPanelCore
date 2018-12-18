@@ -1,0 +1,276 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ModelModel.Store" Provider="Npgsql" ProviderManifestToken="10.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Dillers">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int8" Nullable="false" />
+          <Property Name="Ad" Type="varchar" MaxLength="8000" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DilParametreleris">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int8" Nullable="false" />
+          <Property Name="Kodu" Type="varchar" MaxLength="8000" Nullable="false" />
+          <Property Name="Dili" Type="int8" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kullanıcılars">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int8" Nullable="false" />
+          <Property Name="Ad" Type="varchar" MaxLength="8000" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="8000" Nullable="false" />
+          <Property Name="Şifre" Type="varchar" MaxLength="8000" Nullable="false" />
+          <Property Name="Yetki" Type="int8" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Menus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int8" Nullable="false" />
+          <Property Name="Tablo" Type="int8" Nullable="false" />
+          <Property Name="Sıra" Type="varchar" MaxLength="8000" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tablolars">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int8" Nullable="false" />
+          <Property Name="Ad" Type="varchar" MaxLength="8000" Nullable="false" />
+        </EntityType>
+        <EntityType Name="YetkiGrubus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int8" Nullable="false" />
+          <Property Name="Ad" Type="varchar" MaxLength="8000" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_DilParametreleris_Dillers_0">
+          <End Role="Dillers" Type="Self.Dillers" Multiplicity="1" />
+          <End Role="DilParametreleris" Type="Self.DilParametreleris" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dillers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DilParametreleris">
+              <PropertyRef Name="Dili" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Menus_Tablolars_0">
+          <End Role="Tablolars" Type="Self.Tablolars" Multiplicity="1" />
+          <End Role="Menus" Type="Self.Menus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tablolars">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Menus">
+              <PropertyRef Name="Tablo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errors Found During Generation:
+warning 6035: The relationship 'FK_YetkiGrubus_Kullanıcılars_0' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK_YetkiGrubus_Kullanıcılars_0" />-->
+        <EntityContainer Name="ModelModelStoreContainer">
+          <EntitySet Name="Dillers" EntityType="Self.Dillers" Schema="public" store:Type="Tables" />
+          <EntitySet Name="DilParametreleris" EntityType="Self.DilParametreleris" Schema="public" store:Type="Tables" />
+          <EntitySet Name="Kullanıcılars" EntityType="Self.Kullanıcılars" Schema="public" store:Type="Tables" />
+          <EntitySet Name="Menus" EntityType="Self.Menus" Schema="public" store:Type="Tables" />
+          <EntitySet Name="Tablolars" EntityType="Self.Tablolars" Schema="public" store:Type="Tables" />
+          <EntitySet Name="YetkiGrubus" EntityType="Self.YetkiGrubus" Schema="public" store:Type="Tables" />
+          <AssociationSet Name="FK_DilParametreleris_Dillers_0" Association="Self.FK_DilParametreleris_Dillers_0">
+            <End Role="Dillers" EntitySet="Dillers" />
+            <End Role="DilParametreleris" EntitySet="DilParametreleris" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Menus_Tablolars_0" Association="Self.FK_Menus_Tablolars_0">
+            <End Role="Tablolars" EntitySet="Tablolars" />
+            <End Role="Menus" EntitySet="Menus" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ModelModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Dillers">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="Ad" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="DilParametreleris" Relationship="Self.FK_DilParametreleris_Dillers_0" FromRole="Dillers" ToRole="DilParametreleris" />
+        </EntityType>
+        <EntityType Name="DilParametreleris">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="Kodu" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Dili" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Dillers" Relationship="Self.FK_DilParametreleris_Dillers_0" FromRole="DilParametreleris" ToRole="Dillers" />
+        </EntityType>
+        <EntityType Name="Kullanıcılars">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="Ad" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Şifre" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Yetki" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Menus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="Tablo" Type="Int64" Nullable="false" />
+          <Property Name="Sıra" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Tablolars" Relationship="Self.FK_Menus_Tablolars_0" FromRole="Menus" ToRole="Tablolars" />
+        </EntityType>
+        <EntityType Name="Tablolars">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="Ad" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Menus" Relationship="Self.FK_Menus_Tablolars_0" FromRole="Tablolars" ToRole="Menus" />
+        </EntityType>
+        <EntityType Name="YetkiGrubus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="Ad" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_DilParametreleris_Dillers_0">
+          <End Role="Dillers" Type="Self.Dillers" Multiplicity="1" />
+          <End Role="DilParametreleris" Type="Self.DilParametreleris" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dillers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DilParametreleris">
+              <PropertyRef Name="Dili" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Menus_Tablolars_0">
+          <End Role="Tablolars" Type="Self.Tablolars" Multiplicity="1" />
+          <End Role="Menus" Type="Self.Menus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tablolars">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Menus">
+              <PropertyRef Name="Tablo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Dillers" EntityType="Self.Dillers" />
+          <EntitySet Name="DilParametreleris" EntityType="Self.DilParametreleris" />
+          <EntitySet Name="Kullanıcılars" EntityType="Self.Kullanıcılars" />
+          <EntitySet Name="Menus" EntityType="Self.Menus" />
+          <EntitySet Name="Tablolars" EntityType="Self.Tablolars" />
+          <EntitySet Name="YetkiGrubus" EntityType="Self.YetkiGrubus" />
+          <AssociationSet Name="FK_DilParametreleris_Dillers_0" Association="Self.FK_DilParametreleris_Dillers_0">
+            <End Role="Dillers" EntitySet="Dillers" />
+            <End Role="DilParametreleris" EntitySet="DilParametreleris" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Menus_Tablolars_0" Association="Self.FK_Menus_Tablolars_0">
+            <End Role="Tablolars" EntitySet="Tablolars" />
+            <End Role="Menus" EntitySet="Menus" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelModelStoreContainer" CdmEntityContainer="ModelEntities">
+          <EntitySetMapping Name="Dillers">
+            <EntityTypeMapping TypeName="ModelModel.Dillers">
+              <MappingFragment StoreEntitySet="Dillers">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DilParametreleris">
+            <EntityTypeMapping TypeName="ModelModel.DilParametreleris">
+              <MappingFragment StoreEntitySet="DilParametreleris">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Kodu" ColumnName="Kodu" />
+                <ScalarProperty Name="Dili" ColumnName="Dili" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kullanıcılars">
+            <EntityTypeMapping TypeName="ModelModel.Kullanıcılars">
+              <MappingFragment StoreEntitySet="Kullanıcılars">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Şifre" ColumnName="Şifre" />
+                <ScalarProperty Name="Yetki" ColumnName="Yetki" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Menus">
+            <EntityTypeMapping TypeName="ModelModel.Menus">
+              <MappingFragment StoreEntitySet="Menus">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Tablo" ColumnName="Tablo" />
+                <ScalarProperty Name="Sıra" ColumnName="Sıra" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tablolars">
+            <EntityTypeMapping TypeName="ModelModel.Tablolars">
+              <MappingFragment StoreEntitySet="Tablolars">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="YetkiGrubus">
+            <EntityTypeMapping TypeName="ModelModel.YetkiGrubus">
+              <MappingFragment StoreEntitySet="YetkiGrubus">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

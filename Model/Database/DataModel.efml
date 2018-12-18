@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<efcore namespace="Model" p1:Guid="3eb16629-eab9-4487-aa9f-0a5fc2c1216b" xmlns:p1="http://devart.com/schemas/EntityDeveloper/1.0">
+  <class name="Diller" entity-set="Dillers" table="`Dillers`" schema="public" p1:Guid="77b8ab41-244f-4a5f-afbb-bc1b397206c9">
+    <id name="ID" type="Int64" p1:ValidateRequired="true" p1:Guid="8eda16b6-19bf-448e-9ecb-f91e45bc979b">
+      <column name="`ID`" not-null="True" sql-type="int8" p1:unicode="False" />
+    </id>
+    <property name="Ad" type="String" p1:ValidateRequired="true" p1:Guid="c2704ce4-c710-4e64-83bb-e721e6e1742e">
+      <column name="`Ad`" not-null="True" sql-type="varchar" p1:unicode="True" />
+    </property>
+  </class>
+  <class name="DilParametreleri" entity-set="DilParametreleris" table="`DilParametreleris`" schema="public" p1:Guid="5c7852b8-f9e8-41f8-b927-abb5eeab0de3">
+    <id name="ID" type="Int64" p1:ValidateRequired="true" p1:Guid="548017a5-6486-419b-b4ee-d5cdc45caabe">
+      <column name="`ID`" not-null="True" sql-type="int8" p1:unicode="False" />
+    </id>
+    <property name="Kodu" type="String" p1:ValidateRequired="true" p1:Guid="a225ea8f-e014-4f9b-9f8f-8e227f57a68f">
+      <column name="`Kodu`" not-null="True" sql-type="varchar" p1:unicode="True" />
+    </property>
+    <property name="Dili" type="Int64" p1:ValidateRequired="true" p1:Guid="39172624-8cb8-4d62-a667-96264eb1cd19">
+      <column name="`Dili`" not-null="True" sql-type="int8" p1:unicode="False" />
+    </property>
+  </class>
+  <class name="Tablolar" entity-set="Tablolars" table="`Tablolars`" schema="public" p1:Guid="4c453d82-0625-48c2-8976-87246fbd29ad">
+    <id name="ID" type="Int64" p1:ValidateRequired="true" p1:Guid="c4840087-7d50-4a6c-a617-f405a14af6d3">
+      <column name="`ID`" not-null="True" sql-type="int8" p1:unicode="False" />
+    </id>
+    <property name="Ad" type="String" p1:ValidateRequired="true" p1:Guid="e24011d5-2e42-492b-b1fd-74e827e93703">
+      <column name="`Ad`" not-null="True" sql-type="varchar" p1:unicode="True" />
+    </property>
+  </class>
+  <class name="Menu" entity-set="Menus" table="`Menus`" schema="public" p1:Guid="df275cf7-f843-4a10-a6a9-aceb53160f0f">
+    <id name="ID" type="Int64" p1:ValidateRequired="true" p1:Guid="3ec34aea-a217-4421-aee8-e9326bc6d056">
+      <column name="`ID`" not-null="True" sql-type="int8" p1:unicode="False" />
+    </id>
+    <property name="Tablo" type="Int64" p1:ValidateRequired="true" p1:Guid="136b2120-61db-47d7-b973-ab6b313aa9f0">
+      <column name="`Tablo`" not-null="True" sql-type="int8" p1:unicode="False" />
+    </property>
+    <property name="Sıra" type="String" p1:ValidateRequired="true" p1:Guid="035a532d-6914-4dd4-a605-4164b6dce47c">
+      <column name="`Sıra`" not-null="True" sql-type="varchar" p1:unicode="True" />
+    </property>
+  </class>
+  <class name="Kullanıcılar" entity-set="Kullanıcılars" table="`Kullanıcılars`" schema="public" p1:Guid="e1673895-6151-46b8-bc7d-1ef25b28eac4">
+    <id name="ID" type="Int64" p1:ValidateRequired="true" p1:Guid="5e10c513-fc82-4f95-aad3-ca22a9414f95">
+      <column name="`ID`" not-null="True" sql-type="int8" p1:unicode="False" />
+    </id>
+    <property name="Ad" type="String" p1:ValidateRequired="true" p1:Guid="e3a7294f-a694-4123-9906-2b61960fd17a">
+      <column name="`Ad`" not-null="True" sql-type="varchar" unique="True" p1:unicode="True" />
+    </property>
+    <property name="Email" type="String" p1:ValidateRequired="true" p1:Guid="0ca5d46f-6beb-40f8-ae64-48fef8405136">
+      <column name="`Email`" not-null="True" sql-type="varchar" unique="True" p1:unicode="True" />
+    </property>
+    <property name="Şifre" type="String" p1:ValidateRequired="true" p1:Guid="ae089a93-6ae4-495c-8c25-c9ebdafa1e3a">
+      <column name="`Şifre`" not-null="True" sql-type="varchar" p1:unicode="True" />
+    </property>
+    <property name="Yetki" type="Int64" p1:ValidateRequired="true" p1:Guid="00355f66-e6ce-4178-8d4f-f3ef1cbfbc61">
+      <column name="`Yetki`" not-null="True" sql-type="int8" unique="True" p1:unicode="False" />
+    </property>
+  </class>
+  <class name="YetkiGrubu" entity-set="YetkiGrubus" table="`YetkiGrubus`" schema="public" p1:Guid="58088747-86d3-4e5b-9616-43581b7ccd71">
+    <id name="ID" type="Int64" p1:ValidateRequired="true" p1:Guid="3e880af3-2547-4698-8eac-56445272793e">
+      <column name="`ID`" not-null="True" sql-type="int8" p1:unicode="False" />
+    </id>
+    <property name="Ad" type="String" p1:ValidateRequired="true" p1:Guid="85698718-676b-40ef-9c7e-3a3a6afef9a2">
+      <column name="`Ad`" not-null="True" sql-type="varchar" unique="True" p1:unicode="True" />
+    </property>
+  </class>
+  <associations>
+    <association name="Diller_DilParametreleri" cardinality="OneToMany" p1:Guid="0a19d8e4-497d-4920-ac47-cfcd5d1762e3">
+      <end1 multiplicity="One" name="Diller" class="DilParametreleri" relation-class="Diller" constrained="True" lazy="False" p1:Guid="b483e53d-f873-48b9-ba37-2f45c0e4d011">
+        <property name="ID" />
+      </end1>
+      <end2 multiplicity="Many" name="DilParametreleris" class="Diller" relation-class="DilParametreleri" lazy="False" p1:Guid="432ceca0-a5be-4779-a5ee-a390f1b23c8e">
+        <property name="Dili" />
+      </end2>
+    </association>
+    <association name="Tablolar_Menu" cardinality="OneToMany" p1:Guid="bdc1fe6f-39fc-4850-b1f0-273f3ec5d0d5">
+      <end1 multiplicity="One" name="Tablolar" class="Menu" relation-class="Tablolar" constrained="True" lazy="False" p1:Guid="d518ec61-342e-476c-a1ca-d21134b3e232">
+        <property name="ID" />
+      </end1>
+      <end2 multiplicity="Many" name="Menus" class="Tablolar" relation-class="Menu" lazy="False" p1:Guid="a5a8d48b-c163-4f53-8de5-d5b1e0b79209">
+        <property name="Tablo" />
+      </end2>
+    </association>
+    <association name="Kullanıcılar_YetkiGrubu" cardinality="OneToMany" p1:Guid="7543b67e-0619-4228-9aa9-80416d46e5d2">
+      <end1 multiplicity="One" name="Kullanıcılar" class="YetkiGrubu" relation-class="Kullanıcılar" constrained="True" lazy="False" p1:Guid="dc31ede0-57fd-4cc2-893b-e598d240b9a0">
+        <property name="Yetki" />
+      </end1>
+      <end2 multiplicity="Many" name="YetkiGrubus" class="Kullanıcılar" relation-class="YetkiGrubu" lazy="False" p1:Guid="88970a0a-41d1-4d0d-9d63-f70638fb7048">
+        <property name="ID" />
+      </end2>
+    </association>
+  </associations>
+</efcore>

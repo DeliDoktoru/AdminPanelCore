@@ -14,12 +14,14 @@ namespace AdminPanelCore
 {
     public class Startup
     {
-        public IConfiguration Configuration { get; }
-
-        public Startup(IConfiguration configuration)
+        public IConfiguration Configuration { get; set; }
+        public IHostingEnvironment Environment { get; set; }
+       
+        public Startup(IHostingEnvironment environment, IConfiguration configuration)
         {
             Configuration = configuration;
-
+            Environment = environment;
+          //  Configuration["ConnectionStrings:SuperKentDB"];
         }
 
 
@@ -30,7 +32,7 @@ namespace AdminPanelCore
             services.AddMvc();
             services.AddNodeServices();
             services.AddDistributedMemoryCache();
-
+          //  services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(myconfig));
             services.AddSession(options =>
             {
                 // Set a short timeout for easy testing.
